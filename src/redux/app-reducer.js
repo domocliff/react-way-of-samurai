@@ -1,8 +1,8 @@
-import { authAPI } from "../api/api";
-import { stopSubmit } from "redux-form";
-import { getAuthUserData } from "./auth-reducer";
+import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
+import {getAuthUserData} from "./auth-reducer";
 
-const INITIALIZED_SUCCES = 'INITIALIZED_SUCCES';
+const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
 
 let initialState = {
@@ -11,7 +11,7 @@ let initialState = {
 
 const appReducer = (state = initialState, action) => {
     switch (action.type) {
-        case INITIALIZED_SUCCES:
+        case INITIALIZED_SUCCESS:
             return {
                 ...state,
                 initialized: true
@@ -23,17 +23,18 @@ const appReducer = (state = initialState, action) => {
 }
 
 
-export const initializedSucces = () => ({type: INITIALIZED_SUCCES});
+export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 
 export const initializeApp = () => (dispatch) => {
     let promise = dispatch(getAuthUserData());
-    debugger;
+
     //dispatch(somethingelse());
     //dispatch(somethingelse());
     Promise.all([promise])
         .then(() => {
-        dispatch(initializedSucces());
-    });
+            dispatch(initializedSuccess());
+        });
 }
+
 
 export default appReducer;

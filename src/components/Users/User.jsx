@@ -38,4 +38,4 @@ let User = ({user, followingInProgress, unfollow, follow}) => {
             </div>)
 }
 
-export default User; 
+export default User;
